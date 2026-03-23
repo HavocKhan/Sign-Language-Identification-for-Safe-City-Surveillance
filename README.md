@@ -7,13 +7,10 @@
 * [General info](#general-info)
 * [Dataset](#Dataset)
 * [Technologies and Tools](#technologies-and-tools)
-* [Preprocess](#Preprocess)
-* [Code Examples](#code-examples)
+* [Preprocess](#Preprocess-Pipeline)
+* [Ensemble-Model](#Ensemble-Model)
 * [Features](#features)
-* [Status](#status)
 * [Future Work](#future-work)
-* [Citation](#citation)
-* [Contact](#contact)
 
 ## General info
 
@@ -83,8 +80,6 @@ Complete dataset can be downloaded from https://www.kaggle.com/datasets/havockha
 * Keras
 * OpenCV
 
-## Preprocess
-
 ## 🔄 Preprocessing Pipeline
 
 To ensure consistent and robust input for both streams, we design modality-specific preprocessing pipelines.
@@ -133,14 +128,11 @@ To ensure consistent and robust input for both streams, we design modality-speci
   - Save as **.npy files**
 
 ---
-
-### ⚡ Summary
-
 - Swin3D captures **visual appearance & fine-grained motion**
 - CTR-GCN captures **geometric structure & joint dynamics**
 - Together, they provide complementary representations for robust SLR
 
-## Model
+## Ensemble Model
 
 ![Moddel](./Images/Paper-Model-Diagram.png)
 ## Multi-Modal Ensemble for Sign Language Recognition
@@ -160,21 +152,16 @@ Both streams are fused using a **late-fusion strategy**, allowing independent op
 - Uses **3D Shifted Window Attention** for efficient spatiotemporal modeling  
 - Processes video as 3D patches (2 × 4 × 4)  
 - Pretrained on Kinetics-400 and fine-tuned on LGISE-SCSD  
-
 **Performance:**
-
 - Validation Accuracy: **93.28%**  
 ---
-
 ### 🔶 Skeleton Stream: CTR-GCN
 
 - Models body joint relationships using graph convolution  
 - Uses MediaPipe Pose (33 keypoints)  
 - Learns **dynamic channel-wise topology**  
 - Captures long-range dependencies (e.g., hand-face interaction)  
-
 **Performance:**
-
 - Validation Accuracy: **85.99%**  
 
 ---
