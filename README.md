@@ -1,14 +1,7 @@
-![Stars](https://img.shields.io/github/stars/harshbg/Sign-Language-Interpreter-using-Deep-Learning.svg?style=social)
-![Forks](https://img.shields.io/github/forks/harshbg/Sign-Language-Interpreter-using-Deep-Learning.svg?style=social)
-![GitHub contributors](https://img.shields.io/github/contributors/harshbg/Sign-Language-Interpreter-using-Deep-Learning.svg)
-![Language](https://img.shields.io/github/languages/top/harshbg/Sign-Language-Interpreter-using-Deep-Learning.svg)
-[![GitHub](https://img.shields.io/github/license/harshbg/Sign-Language-Interpreter-using-Deep-Learning.svg)](https://choosealicense.com/licenses/mit)
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fharshbg%2FSign-Language-Interpreter-using-Deep-Learning&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-
 
 # Sign Language Interpreter using Deep Learning
-> A sign language interpreter using live video feed from the camera. 
-The project was completed in 24 hours as part of HackUNT-19, the University of North Texas's annual Hackathon. You can view the project demo on [YouTube](https://link.harshgupta.com/acd72). 
+> Sign language is the primary mode of communication for the hearing-impaired community. While global sign languages like ASL are well-resourced, regional languages such as Pakistan Sign Language (PSL) suffer from a lack of datasets and advancements, especially for safety-critical applications. To address this gap, we propose a Sign Language Action Recognition (SLAR) framework tailored for Safe City Surveillance to detect emergency signals and distress gestures.
+   A key contribution of this work is the introduction of a new video dataset, the Lahore Garrison Institute of Special Education - Safe City Sign Dataset (LGISE-SCSD), captured under diverse environmental conditions to simulate real-world surveillance scenarios. Our methodology employs a Two-Stream Multi-Modal Ensemble, combining a Video Swin Transformer (Swin3D) for spatiotemporal feature extraction from RGB video with a Channel-Topology Refined Graph Convolutional Network (CTR-GCN) to model geometric dependencies from skeletal pose data. While Swin3D and CTR-GCN achieved standalone validation accuracies of 93.28\% and 85.99\% respectively, our optimized late fusion ensemble strategy significantly enhances performance. By effectively mitigating challenges like motion blur and background clutter, the combined framework attains a robust final recognition accuracy of 96.06\%, establishing an authenticated baseline for integrating deep learning-based sign language recognition into urban surveillance networks.. 
 
 ## Table of contents
 * [General info](#general-info)
@@ -26,25 +19,31 @@ The project was completed in 24 hours as part of HackUNT-19, the University of N
 
 ## General info
 
-The theme at HACK UNT 19 was to use technology to improve accessibility by finding a creative solution to benefit the lives of those with a disability. 
-We wanted to make it easy for 70 million deaf people across the world to be independent of translators for there daily communication needs, so we designed the app to work as a personal translator 24*7 for the deaf people.
+We propose an intelligent real-time sign language recognition framework specifically designed for Pakistan Sign Language (PSL), especially in safety-critical contexts of safe city surveillance systems. The system leverages state-of-the-art deep learning models and is trained on an annotated dataset that reflects the local cultural and contextual variations of PSL, including traditional and region-specific gestures.  
+A multimodal sign language action recognition (SLAR) framework based on a dual-stream, RGB–skeleton architecture. The model fuses 3D-CNN appearance features with pose-based motion features to jointly exploit spatial and temporal information.
+We introduce a Pakistan Sign Language video dataset captured under diverse environmental conditions to emulate real-world safe-city surveillance scenarios. The dataset was collected under the supervision of the Lahore Garrison Institute of Special Education and termed the Safe City Sign Dataset (LGISE-SCSD). It is a multi-class, annotated PSL video corpus recorded from more than 10 signers across different backgrounds and lighting conditions.
 
-## Demo
-![Example screenshot](./img/demo4.gif)
+## 📊 Dataset: LGISE-SCSD
+The Lahore Garrison Institute of Special Education - Safe City Sign Dataset consists of:
+Total Samples: 6,193 videos.
+Classes: Accident, Dangerous, Dead, Difficult, Dizzy, Scared, Violent.
+Conditions: Recorded with 10+ signers across varying lighting, backgrounds, and camera angles to simulate real-world urban surveillance.
+Complete dataset can be downloaded from https://www.kaggle.com/datasets/havockhan/sign-language-ident-for-safe-city-surveillance
+## Signs frames
+![Example screenshot](./dataset/accident.png)
 
+![Example screenshot](./dataset/dangreous.png)
 
+![Example screenshot](./dataset/dead.png)
 
-![Example screenshot](./img/demo2.gif)
+![Example screenshot](./dataset/difficult.png)
 
+![Example screenshot](./dataset/dizzy.png)
 
+![Example screenshot](./dataset/i-am-scared.png)
 
-![Example screenshot](./img/demo3.gif)
+![Example screenshot](./dataset/voilent.png)
 
-
-![Example screenshot](./img/demo5.gif)
-
-
-**The entire demo of the project can be found on [YouTube](https://link.harshgupta.com/acd72).**
 
 
 ## Screenshots
@@ -60,7 +59,7 @@ We wanted to make it easy for 70 million deaf people across the world to be inde
 
 ## Setup
 
-* Use comand promt to setup environment by using install_packages.txt and install_packages_gpu.txt files. 
+* Use comand promt to setup environment by using requirments.txt and config.yaml files. 
  
 `pyton -m pip r install_packages.txt`
 
@@ -160,15 +159,17 @@ train()
 K.clear_session();
 
 ````
+## Result Analysis:
+We evaluated the proposed model on a balanced validation set of 623 video samples (89 per class). The ensemble achieved an overall accuracy of 96\% as shown in Tables~\ref{tab:fusion_results} and~\ref{tab:fusion_class_report}, demonstrating strong recognition performance across all sign gesture classes.
 
-## Features
-Our model was able to predict the 44 characters in the ASL with a prediction accuracy >95%.
+The macro-averaged precision, recall, and F1-score were also approximately 0.96, indicating consistent good results across classes without bias. Since the dataset is balanced, the weighted averages closely match the macro averages, showing stable and reliable performance of the proposed model.
 
-Features that can be added:
-* Deploy the project on cloud and create an API for using it.
-* Increase the vocabulary of our model
-* Incorporate feedback mechanism to make the model more robust
-* Add more sign languages
+## 🔮 Future Work (Simple Points)
+* Expand dataset with more participants, more sign classes and Continuous sign sequences
+* Move from isolated sign recognition → sentence-level recognition (Use of CTC / Seq2Seq models)
+* Improve robustness by adding infrared / thermal video data and handling low-light surveillance scenarios
+* Enable real-time inference by knowledge distillation
+* Deploy on edge devices using light weighted models like MobileNet and MoViNet
 
 ## Status
 Project is: _finished_. Our team was the winner of the UNT Hackaton 2019. You can find the our final submission post on [devpost](https://rebrand.ly/754c5). 
