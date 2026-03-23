@@ -9,8 +9,8 @@
 * [Technologies and Tools](#technologies-and-tools)
 * [Preprocess](#Preprocess-Pipeline)
 * [Ensemble-Model](#Ensemble-Model)
-* [Features](#features)
-* [Future Work](#future-work)
+* [Features](#Features)
+* [Future Work](#Future-work)
 
 ## General info
 
