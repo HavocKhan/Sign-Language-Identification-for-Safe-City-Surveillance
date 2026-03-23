@@ -5,11 +5,9 @@
 
 ## Table of contents
 * [General info](#general-info)
-* [Screenshots](#screenshots)
-* [Demo](#demo)
+* [Dataset](#Dataset)
 * [Technologies and Tools](#technologies-and-tools)
-* [Setup](#setup)
-* [Process](#process)
+* [Preprocess](#Preprocess)
 * [Code Examples](#code-examples)
 * [Features](#features)
 * [Status](#status)
@@ -29,6 +27,40 @@ Total Samples: 6,193 videos.
 Classes: Accident, Dangerous, Dead, Difficult, Dizzy, Scared, Violent.
 Conditions: Recorded with 10+ signers across varying lighting, backgrounds, and camera angles to simulate real-world urban surveillance.
 Complete dataset can be downloaded from https://www.kaggle.com/datasets/havockhan/sign-language-ident-for-safe-city-surveillance
+
+<h3>LGISE-SCSD Dataset Statistics</h3>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Statistic</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Total videos</td>
+      <td>6,193</td>
+    </tr>
+    <tr>
+      <td>Number of classes</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Average videos per class</td>
+      <td>884</td>
+    </tr>
+    <tr>
+      <td>Number of signers</td>
+      <td>10+</td>
+    </tr>
+    <tr>
+      <td>Train / Val / Test split</td>
+      <td>75% / 15% / 10%</td>
+    </tr>
+  </tbody>
+</table>
+
 ## Signs frames
 ![Example screenshot](./dataset/accident.png)
 
@@ -45,19 +77,13 @@ Complete dataset can be downloaded from https://www.kaggle.com/datasets/havockha
 ![Example screenshot](./dataset/voilent.png)
 
 
-
-## Screenshots
-
-![Example screenshot](./img/Capture1.PNG)
-![Example screenshot](./img/Capture.PNG)
-
 ## Technologies and Tools
 * Python 
 * TensorFlow
 * Keras
 * OpenCV
 
-## Setup
+## Preprocess
 
 * Use comand promt to setup environment by using requirments.txt and config.yaml files. 
  
@@ -171,11 +197,6 @@ The macro-averaged precision, recall, and F1-score were also approximately 0.96,
 * Enable real-time inference by knowledge distillation
 * Deploy on edge devices using light weighted models like MobileNet and MoViNet
 
-## Status
-Project is: _finished_. Our team was the winner of the UNT Hackaton 2019. You can find the our final submission post on [devpost](https://rebrand.ly/754c5). 
-
-## Future Work
-Link for future Github repo : https://github.com/Manishms18/Sign-Language-Advance
 
 ## Citation
 
