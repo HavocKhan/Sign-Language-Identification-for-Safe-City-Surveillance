@@ -18,7 +18,7 @@ We propose an intelligent real-time sign language recognition framework specific
 A multimodal sign language action recognition (SLAR) framework based on a dual-stream, RGB–skeleton architecture. The model fuses 3D-CNN appearance features with pose-based motion features to jointly exploit spatial and temporal information.
 We introduce a Pakistan Sign Language video dataset captured under diverse environmental conditions to emulate real-world safe-city surveillance scenarios. The dataset was collected under the supervision of the Lahore Garrison Institute of Special Education and termed the Safe City Sign Dataset (LGISE-SCSD). It is a multi-class, annotated PSL video corpus recorded from more than 10 signers across different backgrounds and lighting conditions.
 
-## 📊 Dataset: LGISE-SCSD
+## Dataset: LGISE-SCSD
 The Lahore Garrison Institute of Special Education - Safe City Sign Dataset consists of:
 Total Samples: 6,193 videos.
 Classes: Accident, Dangerous, Dead, Difficult, Dizzy, Scared, Violent.
@@ -80,7 +80,7 @@ Complete dataset can be downloaded from https://www.kaggle.com/datasets/havockha
 * Keras
 * OpenCV
 
-## 🔄 Preprocessing Pipeline
+## Preprocessing Pipeline
 
 To ensure consistent and robust input for both streams, we design modality-specific preprocessing pipelines.
 
@@ -103,7 +103,6 @@ To ensure consistent and robust input for both streams, we design modality-speci
 
 - **Patch Embedding:**
   - Convert video into **3D patches (2 × 4 × 4)**
-
 ---
 
 ### 🔶 Skeleton Stream (CTR-GCN)
@@ -134,7 +133,8 @@ To ensure consistent and robust input for both streams, we design modality-speci
 
 ## Ensemble Model
 
-![Moddel](./Images/Paper-Model-Diagram.png)
+Multi-Stream Ensemble Model architecture diagram showing two parallel processing streams: RGB Stream (left) with Video Frames 32 X 224 X 224 X 3 flowing through 3D Patch Partition, Linear Embedding, 3D Shifted Window Attention, and 3D Avg Pooling leading to Swin 3D Backbone; Skeleton Stream (right) with Pose Est (Mediapipe) 33x Joints flowing through Spatial Graph Adjacency, Feature Correlation, Channel Wise Refinement, and Multi-Scale TCN leading to CTR-GCN Backbone. Both streams converge at Frames Alignment T x V x C, then through Spatiotemporal Global Pooling, Multi-Scale TCN, Channel Wise Refinement, and Feature Correlation before final Weighted Ensemble Fusion Swim 3D + CTR-GCN and Final Classification.
+[!Model](./Images/Paper-Model-Diagram.png)
 ## Multi-Modal Ensemble for Sign Language Recognition
 
 We propose a **two-stream multi-modal ensemble network** to address SLR challenges like fine-grained hand gestures and temporal motion patterns. The framework combines:
@@ -174,20 +174,14 @@ The final prediction combines logits from both streams using unweighted late fus
 | CTR-GCN          | Geometric (Skeleton) | 85.99%       | -          |
 | Swin3D-Tiny      | Visual (RGB)        | 93.28%       | +8.48%     |
 | Ensemble (Proposed) | Visual + Geometric | 96.06%       | +2.78%     |
-
-## Code Examples
-
+[!Ensemble](./images/Ensemble.PNG)
 ````
-# Model Traiining using CNN
-
-
-````
-## Result Analysis:
+## Result Analysis
 We evaluated the proposed model on a balanced validation set of 623 video samples (89 per class). The ensemble achieved an overall accuracy of 96\% as shown in Tables~\ref{tab:fusion_results} and~\ref{tab:fusion_class_report}, demonstrating strong recognition performance across all sign gesture classes.
 
 The macro-averaged precision, recall, and F1-score were also approximately 0.96, indicating consistent good results across classes without bias. Since the dataset is balanced, the weighted averages closely match the macro averages, showing stable and reliable performance of the proposed model.
 
-## 🔮 Future Work (Simple Points)
+## Future Work
 * Expand dataset with more participants, more sign classes and Continuous sign sequences
 * Move from isolated sign recognition → sentence-level recognition (Use of CTC / Seq2Seq models)
 * Improve robustness by adding infrared / thermal video data and handling low-light surveillance scenarios
