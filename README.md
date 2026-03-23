@@ -174,8 +174,11 @@ The final prediction combines logits from both streams using unweighted late fus
 | CTR-GCN          | Geometric (Skeleton) | 85.99%       | -          |
 | Swin3D-Tiny      | Visual (RGB)        | 93.28%       | +8.48%     |
 | Ensemble (Proposed) | Visual + Geometric | 96.06%       | +2.78%     |
+
 ![Ensemble](./images/Ensemble.png)
 ````
+![Model](./Images/Ensemble.png)
+
 ## Result Analysis
 We evaluated the proposed model on a balanced validation set of 623 video samples (89 per class). The ensemble achieved an overall accuracy of 96\% as shown in Tables~\ref{tab:fusion_results} and~\ref{tab:fusion_class_report}, demonstrating strong recognition performance across all sign gesture classes.
 
