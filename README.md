@@ -91,16 +91,52 @@ Complete dataset can be downloaded from https://www.kaggle.com/datasets/havockha
 
 This will help you in installing all the libraries required for the project.
 
-## Process
+## Model
 
-* Run `set_hand_histogram.py` to set the hand histogram for creating gestures. 
-* Once you get a good histogram, save it in the code folder, or you can use the histogram created by us that can be found [here](https://github.com/harshbg/Sign-Language-Interpreter-using-Deep-Learning/blob/master/Code/hist).
-* Added gestures and label them using OpenCV which uses webcam feed. by running `create_gestures.py` and stores them in a database. Alternately, you can use the gestures created by us [here](https://github.com/harshbg/Sign-Language-Interpreter-using-Deep-Learning/tree/master/Code).
-* Add different variations to the captured gestures by flipping all the images by using `Rotate_images.py`.
-* Run `load_images.py` to split all the captured gestures into training, validation and test set. 
-* To view all the gestures, run `display_gestures.py` .
-* Train the model using Keras by running `cnn_model_train.py`.
-* Run `final.py`. This will open up the gesture recognition window which will use your webcam to interpret the trained American Sign Language gestures.  
+![Moddel](./Images/Paper-Model-Diagram.png)
+## Multi-Modal Ensemble for Sign Language Recognition
+
+We propose a **two-stream multi-modal ensemble network** to address SLR challenges like fine-grained hand gestures and temporal motion patterns. The framework combines:
+
+- **RGB Stream:** Video Swin Transformer (Swin3D)  
+- **Skeleton Stream:** CTR-GCN (Graph-based model)  
+
+Both streams are fused using a **late-fusion strategy**, allowing independent optimization and effective integration of appearance-based and motion-based representations.
+
+---
+
+### 🔷 RGB Stream: Video Swin Transformer (Swin3D)
+
+- Captures fine-grained hand gestures and facial cues  
+- Uses **3D Shifted Window Attention** for efficient spatiotemporal modeling  
+- Processes video as 3D patches (2 × 4 × 4)  
+- Pretrained on Kinetics-400 and fine-tuned on LGISE-SCSD  
+
+**Performance:**
+
+- Validation Accuracy: **93.28%**  
+- Training Accuracy: **99.68%**
+
+---
+
+### 🔶 Skeleton Stream: CTR-GCN
+
+- Models body joint relationships using graph convolution  
+- Uses MediaPipe Pose (33 keypoints)  
+- Learns **dynamic channel-wise topology**  
+- Captures long-range dependencies (e.g., hand-face interaction)  
+
+**Performance:**
+
+- Validation Accuracy: **85.99%**  
+- Training Accuracy: **99.68%**
+
+---
+
+### 🔗 Multi-Modal Fusion
+
+The final prediction combines logits from both streams:
+
 
 ## Code Examples
 
