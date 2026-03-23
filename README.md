@@ -175,7 +175,7 @@ The final prediction combines logits from both streams using unweighted late fus
 | Swin3D-Tiny      | Visual (RGB)        | 93.28%       | +8.48%     |
 | Ensemble (Proposed) | Visual + Geometric | 96.06%       | +2.78%     |
 
-![Ensemble](./images/Ensemble.png)
+![Ensemble](./Images/Ensemble.png)
 
 ````
 
