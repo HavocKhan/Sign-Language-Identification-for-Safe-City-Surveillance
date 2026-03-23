@@ -134,7 +134,7 @@ To ensure consistent and robust input for both streams, we design modality-speci
 ## Ensemble Model
 
 Multi-Stream Ensemble Model architecture diagram showing two parallel processing streams: RGB Stream (left) with Video Frames 32 X 224 X 224 X 3 flowing through 3D Patch Partition, Linear Embedding, 3D Shifted Window Attention, and 3D Avg Pooling leading to Swin 3D Backbone; Skeleton Stream (right) with Pose Est (Mediapipe) 33x Joints flowing through Spatial Graph Adjacency, Feature Correlation, Channel Wise Refinement, and Multi-Scale TCN leading to CTR-GCN Backbone. Both streams converge at Frames Alignment T x V x C, then through Spatiotemporal Global Pooling, Multi-Scale TCN, Channel Wise Refinement, and Feature Correlation before final Weighted Ensemble Fusion Swim 3D + CTR-GCN and Final Classification.
-![Model](./Images/Paper-Model-Diagram.png)
+![Model](./Images/Paper-model-Diagram.png)
 ## Multi-Modal Ensemble for Sign Language Recognition
 
 We propose a **two-stream multi-modal ensemble network** to address SLR challenges like fine-grained hand gestures and temporal motion patterns. The framework combines:
@@ -174,7 +174,7 @@ The final prediction combines logits from both streams using unweighted late fus
 | CTR-GCN          | Geometric (Skeleton) | 85.99%       | -          |
 | Swin3D-Tiny      | Visual (RGB)        | 93.28%       | +8.48%     |
 | Ensemble (Proposed) | Visual + Geometric | 96.06%       | +2.78%     |
-![Ensemble](./images/Ensemble.PNG)
+![Ensemble](./images/Ensemble.png)
 ````
 ## Result Analysis
 We evaluated the proposed model on a balanced validation set of 623 video samples (89 per class). The ensemble achieved an overall accuracy of 96\% as shown in Tables~\ref{tab:fusion_results} and~\ref{tab:fusion_class_report}, demonstrating strong recognition performance across all sign gesture classes.
