@@ -115,8 +115,6 @@ Both streams are fused using a **late-fusion strategy**, allowing independent op
 **Performance:**
 
 - Validation Accuracy: **93.28%**  
-- Training Accuracy: **99.68%**
-
 ---
 
 ### 🔶 Skeleton Stream: CTR-GCN
@@ -129,14 +127,17 @@ Both streams are fused using a **late-fusion strategy**, allowing independent op
 **Performance:**
 
 - Validation Accuracy: **85.99%**  
-- Training Accuracy: **99.68%**
 
 ---
 
 ### 🔗 Multi-Modal Fusion
 
-The final prediction combines logits from both streams:
-
+The final prediction combines logits from both streams using unweighted late fusion ensemble.:
+| Model            | Modality            | Top-1 Accuracy | Improvement |
+|-----------------|-------------------|---------------|------------|
+| CTR-GCN          | Geometric (Skeleton) | 85.99%       | -          |
+| Swin3D-Tiny      | Visual (RGB)        | 93.28%       | +8.48%     |
+| Ensemble (Proposed) | Visual + Geometric | 96.06%       | +2.78%     |
 
 ## Code Examples
 
